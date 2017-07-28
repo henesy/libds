@@ -1,0 +1,70 @@
+.TH DUMB 3
+.SH NAME
+print, mkstack, stackpush, stackpop \- utilitarian library from svi space
+.SH SYNOPSIS
+.PP
+.ft L
+.B #include	<dumb.h>
+.PP
+.B
+Stack	mkstack()
+.PP
+.B
+void 	stackpush(Stack *s, void *data)
+.PP
+.B
+void*	stackpop(Stack *s)
+.PP
+.SH DESCRIPTION
+The Dumb library provides structures and methods to ease 
+the writing of OS-agnostic software.
+.PP
+Dumb is purely educational in nature and should not be taken seriously.
+.PP
+.I print
+Provided on non-Plan 9 systems as a macro to 
+.IR printf (3)
+\&.
+.PP
+.I nil
+Provided on non-Plan 9 systems as a macro to 
+.I ((void*)0)
+\&.
+.PP
+.I bool
+Provided in standard C fashion in case a compiler does not support C99+.
+.PP
+.I Stack
+Represents a basic stack data structure that stores arbitrary pointers as
+.I (void*)
+\&.
+The default value for pointers stored when the Stack is empty is equal to
+.I nil
+\&.
+.PP
+.I mkstack
+Initializes and returns a new Stack.
+.PP
+.I stackpush
+Adds the provided value 
+.I data
+to the top of the Stack
+.I s
+\&.
+.PP
+.I stackpop
+Returns the top-most value on the Stack
+.I s
+, or 
+.I nil
+if the Stack is empty. Note: Casting and by extension, deferencing, the 
+return must be done by the user manually as Stack is type-agnostic for storage.
+.SH SOURCE
+https://github.com/henesy/dumb.h
+.SH SEE ALSO
+
+.SH DIAGNOSTICS
+
+.SH BUGS
+
+

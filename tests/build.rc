@@ -1,0 +1,15 @@
+#!/bin/rc
+files=`{lc *.c}
+
+# we assume amd64 here
+cc=6c
+ld=6l
+O=6
+
+echo
+echo 'Building all tests⋯'
+for(file in $files){
+	f=`{echo $file | sed 's/.c//'}
+	$cc $file
+	$ld -o $O.^$f $f^.$O
+}
