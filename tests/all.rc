@@ -1,0 +1,16 @@
+#!/bin/rc
+
+./clean.rc
+./build.rc
+
+files=`{lc *.out}
+
+echo
+echo 'Running all tests⋯'
+for(f in $files){
+	./$f
+}
+
+echo
+echo 'Done.'
+echo

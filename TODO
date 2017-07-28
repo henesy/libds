@@ -1,0 +1,14 @@
+* phase out stdio and stdlib
+* mu.h as a u.h supplement potentially with dumb.h becoming libc.h, essentially
+* Implement net library in the Plan 9 spirit
+* libtroff or something similar to render html to troff/nroff/postscript
+
+* Misc Data Structures
+	* Lists
+	* Heap
+
+* Misc Sorts on Structures
+	* QuickSort
+	* MergeSort
+
+* Compress test scripts by using any logic at all rather than overly complex instructions
