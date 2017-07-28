@@ -1,25 +1,11 @@
-#ifndef DUMB_H
-#define DUMB_H
-#pragma lib "libdumb.a"
+#ifndef DS_H
+#define DS_H
+#pragma lib "libds.a"
+#include <u.h>
+#include <libc.h>
 
-#ifdef __unix__
-#include <stdio.h>
-#include <stdlib.h>
-#define nil ((void*)0)
-#define print(format, ...) fprintf(stdout, format, ##__VA_ARGS__)
-#else
-	#ifdef __WIN32__
-	#include <stdio.h>
-	#include <stdlib.h>
-	#define nil ((void*)0)
-	#define print(format, ...) fprintf(stdout, format, ##__VA_ARGS__)
-	#else
-	#include <u.h>
-	#include <libc.h>
-	#endif
-#endif
 
-/* avoid using u.h, assume amd64 */
+/* assume amd64 i guess, do something about it */
 typedef unsigned long long uint64;
 
 /* who cares about C99 */
@@ -62,10 +48,10 @@ typedef struct ListNode ListNode;
 
 List mklist(void);
 void listadd(List *, void *);
-void * listdel(List *, int);
-void * listget(List *, int);
+void listdel(List *, void *, int(*comp)(void *, void *));
 void * car(List *);
 List * cdr(List *);
+ListNode * listfind(List *, void *, int(*comp)(void *, void *));
 
 struct List
 {
