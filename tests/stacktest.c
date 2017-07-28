@@ -1,4 +1,4 @@
-#include <dumb.h>
+#include <ds.h>
 
 void
 main()

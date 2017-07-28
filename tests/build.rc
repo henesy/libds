@@ -9,7 +9,7 @@ O=6
 echo
 echo 'Building all tests⋯'
 for(file in $files){
-	f=`{echo $file | sed 's/.c//'}
+	f=`{echo $file | sed 's/\.c//'}
 	$cc $file
 	$ld -o $O.^$f $f^.$O
 }

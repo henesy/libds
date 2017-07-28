@@ -3,7 +3,7 @@
 ./clean.rc
 ./build.rc
 
-files=`{lc *.out}
+files=`{ls 6.*}
 
 echo
 echo 'Running all tests⋯'
