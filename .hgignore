@@ -1,0 +1,7 @@
+syntax: glob
+
+*~
+*.[1-8]
+
+syntax: regexp
+^\.[1-8]/
