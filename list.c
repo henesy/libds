@@ -40,11 +40,34 @@ listadd(List *l, void *data)
 void
 listdel(List *l, void * data, int(*comp)(void *, void *))
 {
-	ListNode *todel = listfind(l, data, comp);
-	todel->next->prev = todel->prev;
-	todel->prev->next = todel->next;
-	free(todel);
-	l->size--;
+	if(l->size > 2){
+		ListNode *todel = listfind(l, data, comp);
+		
+		if(todel == l->tail)
+			l->tail = todel->next;
+		if(todel == l->head)
+			l->head = todel->prev;
+		
+		todel->next->prev = todel->prev;
+		todel->prev->next = todel->next;
+		free(todel);
+		l->size--;
+	}else if(l->size == 2){
+		ListNode *todel = listfind(l, data, comp);
+		ListNode *other = todel->next;
+		free(todel);
+		other->next=other;
+		other->prev=other;
+		l->head=other;
+		l->tail=other;
+		l->size--;
+	}else if(l->size == 1){
+		ListNode *todel = l->head;
+		free(todel);
+		l->head=nil;
+		l->tail=nil;
+		l->size--;
+	}
 }
 
 void *
